@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="screen with issue"
+        class="com.company.sample.web.screens.ScreenWithIssue"
+        messagesPack="com.company.sample.web.screens">
+    <dsContext>
+        <collectionDatasource id="usersDs"
+                              allowCommit="false"
+                              class="com.haulmont.cuba.security.entity.User">
+            <query>
+                <![CDATA[select e from sec$User e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <table id="sampleTable"
+               aggregatable="true"
+               aggregationStyle="BOTTOM"
+               height="100%"
+               showTotalAggregation="true"
+               width="100%">
+            <columns>
+                <column id="login"/>
+                <column id="version">
+                    <aggregation type="SUM"/>
+                </column>
+            </columns>
+            <rows datasource="usersDs"/>
+        </table>
+    </layout>
+</window>
